@@ -6,18 +6,11 @@ language: rust
 services: docker
 sudo: required
 
-rust:
-  - stable
-  - beta
-  - nightly
-
 env:
   global:
     - CRATE_NAME=simple-logging
 
 matrix:
-  allow_failures:
-    - rust: nightly
   include:
     # Linux
     - env: TARGET=i686-unknown-linux-gnu
@@ -47,6 +40,13 @@ matrix:
     - env: TARGET=powerpc64-unknown-linux-gnu
     - env: TARGET=powerpc64le-unknown-linux-gnu
     - env: TARGET=s390x-unknown-linux-gnu DISABLE_TESTS=1
+
+    # Testing other channels
+    - env: TARGET=x86_64-unknown-linux-gnu
+      rust: beta
+    - env: TARGET=x86_64-apple-darwin
+      os: osx
+      rust: beta
 
 before_install: set -e
 
