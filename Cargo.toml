@@ -1,0 +1,21 @@
+[package]
+name        = "simple-logging"
+description = "A simple logger for the log facade"
+readme      = "README.md"
+keywords    = ["simple", "log", "logger", "logging"]
+categories  = ["rust-patterns", "text-processing", "value-formatting"]
+repository  = "https://github.com/Ereski/simple-logging"
+license     = "BSD-3-Clause"
+version     = "1.0.0"
+authors     = ["Isabela Schulze <isabela@ereski.org>"]
+
+[badges]
+appveyor  = {repository = "Ereski/simple-logging"}
+travis-ci = {repository = "Ereski/simple-logging"}
+
+[dependencies]
+log       = "0.3.8"
+thread-id = "3.2.0"
+
+[dev-dependencies]
+regex = "0.2.2"
