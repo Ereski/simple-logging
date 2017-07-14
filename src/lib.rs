@@ -154,10 +154,17 @@ impl<T: Write + Send + Sync> Log for SimpleLogger<T> {
         let miliseconds = now.subsec_nanos() / 1000000;
 
         let mut sink = self.sink.lock().unwrap();
-        let _        = write!(sink,
-            "[{:02}:{:02}:{:02}.{:03}] ({}) {:6} {}\n", hours, minutes,
-            seconds, miliseconds, thread_id::get(), record.level(),
-            record.args());
+        let _        = write!(
+            sink,
+            "[{:02}:{:02}:{:02}.{:03}] ({}) {:6} {}\n",
+            hours,
+            minutes,
+            seconds,
+            miliseconds,
+            thread_id::get(),
+            record.level(),
+            record.args()
+        );
     }
 }
 
@@ -175,8 +182,10 @@ impl<T: Write + Send + Sync> Log for SimpleLogger<T> {
 /// simple_logging::log_to_file("test.log", LogLevelFilter::Info);
 /// # }
 /// ```
-pub fn log_to_file<T: AsRef<Path>>(path: T, max_log_level: LogLevelFilter)
-        -> io::Result<()> {
+pub fn log_to_file<T: AsRef<Path>>(
+    path: T,
+    max_log_level: LogLevelFilter
+) -> io::Result<()> {
     let file = File::create(path)?;
 
     log_to(file, max_log_level)
@@ -199,8 +208,9 @@ pub fn log_to_file<T: AsRef<Path>>(path: T, max_log_level: LogLevelFilter)
 /// simple_logging::log_to_stderr(LogLevelFilter::Info);
 /// # }
 /// ```
-pub fn log_to_stderr(max_log_level: LogLevelFilter)
-        -> Result<(), SetLoggerError> {
+pub fn log_to_stderr(
+    max_log_level: LogLevelFilter
+) -> Result<(), SetLoggerError> {
     log_to(io::stderr(), max_log_level)
 }
 
@@ -219,8 +229,10 @@ pub fn log_to_stderr(max_log_level: LogLevelFilter)
 /// simple_logging::log_to(io::sink(), LogLevelFilter::Info);
 /// # }
 /// ```
-pub fn log_to<T: Write + Send + Sync + 'static>(sink: T,
-        max_log_level: LogLevelFilter) -> Result<(), SetLoggerError> {
+pub fn log_to<T: Write + Send + Sync + 'static>(
+    sink: T,
+    max_log_level: LogLevelFilter
+) -> Result<(), SetLoggerError> {
     log::set_logger(|log_max_log_level| {
         log_max_log_level.set(max_log_level);
 
@@ -266,7 +278,7 @@ mod tests {
         assert!(buf.lock().unwrap().is_empty());
 
         // Test message format
-        let pat  = Regex::new(r"^\[\d\d:\d\d:\d\d.\d\d\d] \([0-9a-zA-Z]+\) INFO   test\n$").unwrap();
+        let pat = Regex::new(r"^\[\d\d:\d\d:\d\d.\d\d\d] \([0-9a-zA-Z]+\) INFO   test\n$").unwrap();
         info!("test");
         let line = str::from_utf8(&buf.lock().unwrap()).unwrap().to_owned();
         assert!(pat.is_match(&line));
