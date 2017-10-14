@@ -62,7 +62,7 @@ extern crate log;
 extern crate regex;
 
 use log::{Log, LogLevelFilter, LogMetadata, LogRecord, SetLoggerError};
-use std::fs::File;
+use std::fs::OpenOptions;
 use std::io;
 use std::io::Write;
 use std::path::Path;
