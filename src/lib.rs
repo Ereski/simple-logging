@@ -177,7 +177,10 @@ impl<T: Write + Send + Sync> Log for SimpleLogger<T> {
 /// ```
 pub fn log_to_file<T: AsRef<Path>>(path: T, max_log_level: LogLevelFilter)
         -> io::Result<()> {
-    let file = File::create(path)?;
+    let file = OpenOptions::new()
+            .append(true)
+            .create(true)
+            .open(path)?;
 
     log_to(file, max_log_level)
         // Wrap SetLoggerError into an io::Error just to avoid defining a new
