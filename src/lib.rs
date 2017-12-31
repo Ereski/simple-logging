@@ -149,7 +149,7 @@ impl SimpleLoggerInner {
 
         let _ = write!(
             self.sink,
-            "[{:02}:{:02}:{:02}.{:03}] ({}) {:6} {}\n",
+            "[{:02}:{:02}:{:02}.{:03}] ({:x}) {:6} {}\n",
             hours,
             minutes,
             seconds,
