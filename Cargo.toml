@@ -1,13 +1,13 @@
 [package]
 name          = "simple-logging"
 description   = "A simple logger for the log facade"
-documentation = "https://docs.rs/simple-logging/1/simple_logging/"
+documentation = "https://docs.rs/simple-logging"
 readme        = "README.md"
 keywords      = ["simple", "log", "logger", "logging"]
 categories    = ["rust-patterns", "text-processing", "value-formatting"]
 repository    = "https://github.com/Ereski/simple-logging"
 license       = "BSD-3-Clause"
-version       = "1.0.1"
+version       = "2.0.0"
 authors       = ["Isabela Schulze <isabela@ereski.org>"]
 
 [badges]
