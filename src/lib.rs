@@ -84,6 +84,9 @@ extern crate log;
 #[cfg(test)]
 extern crate regex;
 
+// TODO: include the changelog as a module when
+// https://github.com/rust-lang/rust/issues/44732 stabilises
+
 use log::{LevelFilter, Log, Metadata, Record};
 use std::fs::File;
 use std::io;
