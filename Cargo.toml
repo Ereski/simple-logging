@@ -15,7 +15,8 @@ appveyor  = {repository = "Ereski/simple-logging"}
 travis-ci = {repository = "Ereski/simple-logging"}
 
 [dependencies]
-log       = "0.3.8"
+lazy_static = "1.0.0"
+log = "0.4.0"
 thread-id = "3.2.0"
 
 [dev-dependencies]
