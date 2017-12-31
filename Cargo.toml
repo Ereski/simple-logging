@@ -7,7 +7,7 @@ keywords      = ["simple", "log", "logger", "logging"]
 categories    = ["rust-patterns", "text-processing", "value-formatting"]
 repository    = "https://github.com/Ereski/simple-logging"
 license       = "BSD-3-Clause"
-version       = "2.0.0"
+version       = "2.0.1"
 authors       = ["Isabela Schulze <isabela@ereski.org>"]
 
 [badges]
