@@ -88,6 +88,7 @@ extern crate regex;
 // https://github.com/rust-lang/rust/issues/44732 stabilises
 
 use log::{LevelFilter, Log, Metadata, Record};
+use std::fs::OpenOptions;
 use std::fs::File;
 use std::io;
 use std::io::Write;
@@ -179,6 +180,19 @@ pub fn log_to_file<T: AsRef<Path>>(
     max_log_level: LevelFilter,
 ) -> io::Result<()> {
     let file = File::create(path)?;
+    log_to(file, max_log_level);
+
+    Ok(())
+}
+
+pub fn append_log_to_file<T: AsRef<Path>>(
+    path: T,
+    max_log_level: LevelFilter,
+) -> io::Result<()> {
+    let file = OpenOptions::new()
+        .append(true)
+        .create(true)
+        .open(path)?;
     log_to(file, max_log_level);
 
     Ok(())
