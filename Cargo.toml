@@ -7,17 +7,17 @@ keywords      = ["simple", "log", "logger", "logging"]
 categories    = ["rust-patterns", "text-processing", "value-formatting"]
 repository    = "https://github.com/Ereski/simple-logging"
 license       = "BSD-3-Clause"
-version       = "2.0.1"
-authors       = ["Isabela Schulze <isabela@ereski.org>"]
+version       = "2.0.2"
+authors       = ["Carol Schulze <carol@ereski.org>"]
 
 [badges]
 appveyor  = {repository = "Ereski/simple-logging"}
 travis-ci = {repository = "Ereski/simple-logging"}
 
 [dependencies]
-lazy_static = "1.0.0"
-log = "0.4.0"
-thread-id = "3.2.0"
+lazy_static = "1"
+log = "0.4"
+thread-id = "3"
 
 [dev-dependencies]
-regex = "0.2.2"
+regex = "1"
