@@ -266,7 +266,8 @@ mod tests {
         // Test message format
         let pat = Regex::new(
             r"^\[\d\d:\d\d:\d\d.\d\d\d] \([0-9a-zA-Z]+\) INFO   test\n$",
-        ).unwrap();
+        )
+        .unwrap();
         info!("test");
         let line = str::from_utf8(&buf.lock().unwrap()).unwrap().to_owned();
         assert!(pat.is_match(&line));
